@@ -10,7 +10,7 @@ class WSUWP_WordPress_Dashboard {
 	 * Maintain and return the one instance. Initiate hooks when
 	 * called the first time.
 	 *
-	 * @since 0.0.1
+	 * @since 1.6.0
 	 *
 	 * @return \WSUWP_WordPress_Dashboard
 	 */
@@ -25,7 +25,7 @@ class WSUWP_WordPress_Dashboard {
 	/**
 	 * Setup hooks to include.
 	 *
-	 * @since 0.0.1
+	 * @since 1.6.0
 	 */
 	public function setup_hooks() {
 		add_action( 'wp_dashboard_setup', array( $this, 'remove_dashboard_widgets' ) );
