@@ -150,7 +150,7 @@ class WSUWP_WordPress_Dashboard {
 	 * @return string
 	 */
 	public function admin_footer_text() {
-		$wp_text = sprintf( __( 'Thank you for creating with <a href="%1$s">WordPress</a> at <a href="%1$s">Washington State University</a>.' ), __( 'https://wordpress.org/' ), 'http://wsu.edu' );
+		$wp_text = sprintf( 'Thank you for creating with <a href="%1$s">WordPress</a> at <a href="%2$s">Washington State University</a>.', 'https://wordpress.org/', 'https://wsu.edu' );
 		$text = '<span id="footer-thankyou">' . $wp_text . '</span>';
 
 		return $text;
