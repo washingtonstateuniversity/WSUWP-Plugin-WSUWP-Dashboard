@@ -92,9 +92,9 @@ class WSUWP_WordPress_Dashboard {
 			?>
 			<h4>Global</h4>
 			<ul class="wsuwp-platform-counts wsuwp-count-above wsuwp-count-thirds">
-				<li id="dash-global-networks"><a href="<?php echo esc_url( network_admin_url( 'sites.php?display=network' ) ); ?>"><?php echo wsuwp_network_count(); ?></a></li>
-				<li id="dash-global-sites"><a href="<?php echo esc_url( network_admin_url( 'sites.php' ) ); ?>"><?php echo wsuwp_global_site_count(); ?></a></li>
-				<li id="dash-global-users"><a href="<?php echo esc_url( network_admin_url( 'users.php' ) ); ?>"><?php echo wsuwp_global_user_count(); ?></a></li>
+				<li id="dash-global-networks"><a href="<?php echo esc_url( network_admin_url( 'sites.php?display=network' ) ); ?>"><?php echo absint( wsuwp_network_count() ); ?></a></li>
+				<li id="dash-global-sites"><a href="<?php echo esc_url( network_admin_url( 'sites.php' ) ); ?>"><?php echo absint( wsuwp_global_site_count() ); ?></a></li>
+				<li id="dash-global-users"><a href="<?php echo esc_url( network_admin_url( 'users.php' ) ); ?>"><?php echo absint( wsuwp_global_user_count() ); ?></a></li>
 			</ul>
 			<?php
 		}
@@ -102,7 +102,7 @@ class WSUWP_WordPress_Dashboard {
 		<h4>Network</h4>
 		<ul class="wsuwp-platform-counts">
 			<li id="dash-network-sites"><a href="<?php echo esc_url( network_admin_url( 'sites.php' ) ); ?>"><?php echo esc_html( get_site_option( 'blog_count' ) ); ?></a></li>
-			<li id="dash-network-users"><a href="<?php echo esc_url( network_admin_url( 'users.php' ) ); ?>"><?php echo wsuwp_network_user_count( get_current_network_id() ); ?></a></li>
+			<li id="dash-network-users"><a href="<?php echo esc_url( network_admin_url( 'users.php' ) ); ?>"><?php echo absint( wsuwp_network_user_count( get_current_network_id() ) ); ?></a></li>
 		</ul>
 		<?php
 	}
@@ -128,19 +128,19 @@ class WSUWP_WordPress_Dashboard {
 		?>
 		<h4>Cache Data</h4>
 		<ul class="wsuwp-platform-counts wsuwp-count-above">
-			<li id="dash-memcached-written"><?php echo size_format( $stats['bytes_written'] ); ?></li>
-			<li id="dash-memcached-read"><?php echo size_format( $stats['bytes_read'] ); ?></li>
+			<li id="dash-memcached-written"><?php echo esc_html( size_format( $stats['bytes_written'] ) ); ?></li>
+			<li id="dash-memcached-read"><?php echo esc_html( size_format( $stats['bytes_read'] ) ); ?></li>
 		</ul>
 
 		<h4>Cache Hits</h4>
 		<ul class="wsuwp-platform-counts wsuwp-count-above">
-			<li id="dash-memcached-gets"><?php echo $cache_hits; ?></li>
-			<li id="dash-memcached-getsperc"><?php echo $cache_per; ?>%</li>
+			<li id="dash-memcached-gets"><?php echo esc_html( $cache_hits ); ?></li>
+			<li id="dash-memcached-getsperc"><?php echo esc_html( $cache_per ); ?>%</li>
 		</ul>
-		<p>The memcached service has been running for <strong><?php echo human_time_diff( time() - $stats['uptime'], time() ); ?></strong> and
-			has handled <strong><?php echo $stats['total_items']; ?> items</strong> over <strong><?php echo $stats['total_connections']; ?> connections</strong>.</p>
-		<p>Currently, <strong><?php echo $stats['curr_connections']; ?> connections</strong> are in use and memcached is storing <strong><?php echo $stats['curr_items']; ?>
-				items</strong> totalling <strong><?php echo size_format( $stats['bytes'] ); ?></strong>.</p>
+		<p>The memcached service has been running for <strong><?php echo esc_html( human_time_diff( time() - $stats['uptime'], time() ) ); ?></strong> and
+			has handled <strong><?php echo absint( $stats['total_items'] ); ?> items</strong> over <strong><?php echo absint( $stats['total_connections'] ); ?> connections</strong>.</p>
+		<p>Currently, <strong><?php echo absint( $stats['curr_connections'] ); ?> connections</strong> are in use and memcached is storing <strong><?php echo absint( $stats['curr_items'] ); ?>
+				items</strong> totalling <strong><?php echo esc_html( size_format( $stats['bytes'] ) ); ?></strong>.</p>
 		<?php
 	}
 
@@ -160,6 +160,6 @@ class WSUWP_WordPress_Dashboard {
 	 * Display the WSU shield in the footer.
 	 */
 	public function display_shield_in_footer() {
-		echo '<img style="float:left; margin-right:5px;" height="20" src="' . plugins_url( '/images/wsu-shield.png', __DIR__ ) . '" />';
+		echo '<img style="float:left; margin-right:5px;" height="20" src="' . esc_url( plugins_url( '/images/wsu-shield.png', __DIR__ ) ) . '" />';
 	}
 }
