@@ -70,7 +70,7 @@ class WSUWP_WordPress_Dashboard {
 		remove_meta_box( 'dashboard_primary'          , 'dashboard-network', 'side' );
 		remove_meta_box( 'dashboard_secondary'        , 'dashboard-network', 'side' );
 
-		if ( get_main_network_id() == get_current_network_id() ) {
+		if ( get_main_network_id() == get_current_network_id() ) { // @codingStandardsIgnoreLine
 			$count_title = 'WSUWP Platform Counts';
 		} else {
 			$network_name = get_site_option( 'site_name' );
@@ -78,7 +78,7 @@ class WSUWP_WordPress_Dashboard {
 		}
 		wp_add_dashboard_widget( 'dashboard_wsuwp_counts', $count_title, array( $this, 'network_dashboard_counts' ) );
 
-		if ( get_main_network_id() == get_current_network_id() ) {
+		if ( get_main_network_id() == get_current_network_id() ) { // @codingStandardsIgnoreLine
 			wp_add_dashboard_widget( 'dashboard_wsuwp_memcached', 'Global Memcached Usage', array( $this, 'global_memcached_stats' ) );
 		}
 	}
@@ -88,7 +88,7 @@ class WSUWP_WordPress_Dashboard {
 	 * when viewing the network administration dashboard.
 	 */
 	public function network_dashboard_counts() {
-		if ( get_current_network_id() == get_main_network_id() ) {
+		if ( get_current_network_id() == get_main_network_id() ) { // @codingStandardsIgnoreLine
 			?>
 			<h4>Global</h4>
 			<ul class="wsuwp-platform-counts wsuwp-count-above wsuwp-count-thirds">
