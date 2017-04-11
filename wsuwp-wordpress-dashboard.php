@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: WSUWP WordPress Dashboard
-Version: 1.6.0
+Version: 1.6.1
 Description: The default admin dashboard displayed in WSUWP
 Author: washingtonstateuniversity, jeremyfelt
 Author URI: https://web.wsu.edu/
